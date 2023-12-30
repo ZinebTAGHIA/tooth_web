@@ -17,4 +17,9 @@ public class Student extends User {
     @OneToMany(mappedBy = "student")
     @JsonIgnore
     private List<StudentPW> studentPWS;
+
+    @Override
+    public String role() {
+        return "STUDENT";
+    }
 }

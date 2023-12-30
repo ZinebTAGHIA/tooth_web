@@ -14,4 +14,9 @@ public class Professor extends User {
     @OneToMany(mappedBy = "professor")
     @JsonIgnore
     private List<Group> groups;
+
+    @Override
+    public String role() {
+        return "PROFESSOR";
+    }
 }

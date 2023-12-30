@@ -17,4 +17,8 @@ public class User {
     protected String firstName;
     protected String lastName;
     protected String image;
+
+    public String role() {
+        return "USER";
+    }
 }

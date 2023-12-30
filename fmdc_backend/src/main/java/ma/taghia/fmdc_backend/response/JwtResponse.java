@@ -5,12 +5,13 @@ public class JwtResponse {
     private String type = "Bearer";
     private int id;
     private String userName;
+    private String role;
 
-    public JwtResponse(String accessToken, int id, String userName) {
+    public JwtResponse(String accessToken, int id, String userName, String role) {
         this.token = accessToken;
         this.id = id;
         this.userName = userName;
-
+        this.role = role;
     }
 
     public String getAccessToken() {
@@ -45,4 +46,11 @@ public class JwtResponse {
         this.userName = userName;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

@@ -13,17 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://fmdc-frontend.vercel.app")
 public class StudentController {
 
+    @Autowired
     private StudentService studentService;
 
-    private final BCryptPasswordEncoder passwordEncoder;
-
-    public StudentController(StudentService studentService, BCryptPasswordEncoder passwordEncoder) {
-        this.studentService = studentService;
-        this.passwordEncoder = passwordEncoder;
-    }
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @PostMapping("")
     public ResponseEntity<Object> create(@RequestBody Student studentDetails) {

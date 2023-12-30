@@ -6,19 +6,25 @@ import ma.taghia.fmdc_backend.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/admins")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://fmdc-frontend.vercel.app")
 public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @PostMapping("")
     public ResponseEntity<Object> create(@RequestBody Admin adminDetails) {
+        String hashedPassword = passwordEncoder.encode(adminDetails.getPassword());
+        adminDetails.setPassword(hashedPassword);
         Admin admin = adminService.create(adminDetails);
         if (admin == null) {
             return new ResponseEntity<>("Invalid request Data", HttpStatus.BAD_REQUEST);

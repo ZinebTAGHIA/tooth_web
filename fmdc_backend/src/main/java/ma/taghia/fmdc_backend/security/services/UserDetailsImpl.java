@@ -19,16 +19,18 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String password;
 
-    public UserDetailsImpl(int id, String userName, String password) {
+    private String role;
+
+    public UserDetailsImpl(int id, String userName, String password, String role) {
         this.id = id;
         this.userName = userName;
         this.password = password;
-
+        this.role = role;
     }
 
     public static UserDetailsImpl build(User user) {
-
-        return new UserDetailsImpl(user.getId(), user.getUserName(), user.getPassword());
+        String userRole = user.role();
+        return new UserDetailsImpl(user.getId(), user.getUserName(), user.getPassword(), userRole);
     }
 
     public int getId() {
@@ -44,6 +46,10 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public String getUsername() {
         return userName;
+    }
+
+    public String getRole() {
+        return this.role;
     }
 
     @Override

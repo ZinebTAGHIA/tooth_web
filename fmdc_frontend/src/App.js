@@ -15,11 +15,31 @@ import ListeTeeth from "./pages/ListeTeeth";
 import AddPW from "./pages/AddPW";
 import ListePWs from "./pages/ListePWs";
 import Login from "./pages/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import Profil from "./pages/Profil";
+import axios from "./api/axios";
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [photo, setPhoto] = useState("");
+
+  useEffect(() => {
+    if (user && user.id) {
+      axios
+        .get(`/api/professors/professor/${user.id}/image`, {
+          responseType: "arraybuffer",
+        })
+        .then((response) => {
+          const blob = new Blob([response.data], { type: "image/jpeg" });
+          const imageUrl = URL.createObjectURL(blob);
+          setPhoto(imageUrl);
+        })
+        .catch((error) => {
+          console.error("Error fetching image:", error);
+        });
+    }
+  }, [user]);
 
   return (
     <div className="App">
@@ -29,7 +49,7 @@ function App() {
             path="/"
             element={
               <ProtectedRoute user={user}>
-                <SharedLayout setUser={setUser} user={user} />
+                <SharedLayout photo={photo} setUser={setUser} user={user} />
               </ProtectedRoute>
             }
           >
@@ -44,6 +64,17 @@ function App() {
             <Route path="teeth-list" element={<ListeTeeth />} />
             <Route path="add-pw" element={<AddPW />} />
             <Route path="pws-list" element={<ListePWs />} />
+            <Route
+              path="profil"
+              element={
+                <Profil
+                  setPhoto={setPhoto}
+                  photo={photo}
+                  user={user}
+                  setUser={setUser}
+                />
+              }
+            />
           </Route>
           <Route path="login" element={<Login setUser={setUser} />} />
           <Route path="*" element={<Error />} />

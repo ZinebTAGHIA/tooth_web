@@ -12,9 +12,15 @@ const SharedLayout = (props) => {
 
   return (
     <>
-      <Sidebar isSidebarHiden={isSidebarHiden} />
+      <Sidebar
+        photo={props.photo}
+        user={props.user}
+        isSidebarHiden={isSidebarHiden}
+      />
       <section id="content">
         <Navbar
+          photo={props.photo}
+          user={props.user}
           isSidebarHiden={isSidebarHiden}
           onHidenSidebarChange={handleHidenChange}
         />

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/groups")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://fmdc-frontend.vercel.app")
 public class GroupController {
     @Autowired
     private GroupService groupService;

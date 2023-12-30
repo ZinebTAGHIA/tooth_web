@@ -12,8 +12,6 @@ import { Panel } from "primereact/panel";
 import "./styles/form.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
-import { Password } from "primereact/password";
-import { MultiSelect } from "primereact/multiselect";
 
 const AddGroup = () => {
   const [showMessage, setShowMessage] = useState(false);

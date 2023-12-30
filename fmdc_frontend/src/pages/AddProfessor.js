@@ -128,7 +128,6 @@ const AddProfessor = () => {
                       lastName: "",
                       firstName: "",
                       userName: "",
-                      // image: "",
                       grade: "",
                       password: "",
                     }}
@@ -211,38 +210,11 @@ const AddProfessor = () => {
                             </div>
                           )}
                         />
-                        {/* <Field
-                          name="image"
-                          render={({ input, meta }) => (
-                            <div className="field">
-                              <span className="p-float-label p-input-icon-right">
-                                <i className="pi pi-envelope" />
-                                <InputText
-                                  id="image"
-                                  {...input}
-                                  className={classNames({
-                                    "p-invalid": isFormFieldValid(meta),
-                                  })}
-                                />
-                                <label
-                                  htmlFor="image"
-                                  className={classNames({
-                                    "p-error": isFormFieldValid(meta),
-                                  })}
-                                >
-                                  Image*
-                                </label>
-                              </span>
-                              {getFormErrorMessage(meta)}
-                            </div>
-                          )}
-                        /> */}
                         <Field
                           name="grade"
                           render={({ input, meta }) => (
                             <div className="field">
                               <span className="p-float-label p-input-icon-right">
-                                <i className="pi pi-envelope" />
                                 <InputText
                                   id="grade"
                                   {...input}

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/teeth")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://fmdc-frontend.vercel.app")
 public class ToothController {
     @Autowired
     private ToothService toothService;

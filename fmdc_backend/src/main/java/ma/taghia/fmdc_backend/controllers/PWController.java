@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pws")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://fmdc-frontend.vercel.app")
 public class PWController {
     @Autowired
     private PWService pwService;

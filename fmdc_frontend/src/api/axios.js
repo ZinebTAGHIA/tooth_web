@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8083";
+axios.defaults.baseURL = "https://fragile-prose-production.up.railway.app";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.headers.post["Accept"] = "application/json";
 // axios.defaults.withCredentials = true;
